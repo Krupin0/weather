@@ -1,10 +1,10 @@
 import Weathercode from "./Weathercode"
 export default function DayInfo(props){
 
-    let test = []
+    let selectedHours = []
 
     for (let i = (props.clicked * 24); i < ((props.clicked * 24) +24); i++){
-        test.push(i)
+        selectedHours.push(i)
     }
 
     const average = arr => {
@@ -15,10 +15,10 @@ export default function DayInfo(props){
         return(sum/arr.length)
     }
     
-    const avgHumidityArr = props.humidity.slice(test[0], test[test.length-1] +1)
-    const avgDewpointArr = props.dewpoint.slice(test[0], test[test.length-1] +1)
-    const avgPreasureArr = props.pressure.slice(test[0], test[test.length-1] +1)
-    const avgCloudcoverArr = props.cloudcover.slice(test[0], test[test.length-1] +1)
+    const avgHumidityArr = props.humidity.slice(selectedHours[0], selectedHours[selectedHours.length-1] +1)
+    const avgDewpointArr = props.dewpoint.slice(selectedHours[0], selectedHours[selectedHours.length-1] +1)
+    const avgPreasureArr = props.pressure.slice(selectedHours[0], selectedHours[selectedHours.length-1] +1)
+    const avgCloudcoverArr = props.cloudcover.slice(selectedHours[0], selectedHours[selectedHours.length-1] +1)
     
 
     const avgCloudcover = Math.round(average(avgCloudcoverArr) * 100) / 100;
@@ -30,7 +30,7 @@ export default function DayInfo(props){
 
     return(
         !props.sunset ? null :
-        <div className="bg-white w-full md:w-3/5 lg:w-2/3 xl:w-2/5 max-h-3/4 bg-opacity-90 md:p-5 rounded-lg">
+        <div className="bg-white w-full md:w-3/5 lg:w-2/3 xl:w-2/5 max-h-3/4 bg-opacity-90 md:p-5 rounded-lg justify-self-center">
             <div className="flex justify-around items-center">
                 <div>
                     <h1 className="text-5xl mb-3">{days[new Date(props.sunset[props.clicked]).getDay()]}</h1>

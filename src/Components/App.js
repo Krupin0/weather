@@ -1,5 +1,5 @@
 import React from "react"
-import "./index.css"
+import "../index.css"
 import BasicDayInfo from "./BasicDayInfo";
 import DayInfo from "./DayInfo";
 import HourInfo from "./HourInfo";
@@ -94,25 +94,26 @@ export default function App(){
     function clickHandle(id){
         setClicked(id)
     }
-    const viewHeight = !cords.latt ? "h-screen" : ""
+    const viewHeight = !cords.latt ? " h-screen" : ""
     return(
-        <div className={"flex flex-col items-center justify-center w-screen bg-[url('bg.jpg')] bg-cover bg-center min-h-screen " + viewHeight}>
-            <div className = "flex flex-col justify-center w-1/3 items-center">
+        <div className={"grid w-screen bg-[url('bg.jpg')] bg-cover bg-center min-h-screen" + viewHeight}>
+            <div className = "flex flex-col justify-center w-1/3 items-center justify-self-center self-center">
                 <h1 className = "text-9xl text-slate-50 font-light">Počasí</h1>
                 <input type="text" placeholder="Zadej název města" value={inp} onKeyDown={buttonTownToCords} className="focus:placeholder:text-transparent placeholder:text-center placeholder:text-slate-300 bg-slate-400 bg-opacity-75 rounded-3xl px-9 py-3 text-white text-center text-xl mt-5" onChange={(event) => setInp(event.target.value)}/>
             </div>
             {!cords.latt ? null : 
             <>
-                <div className="flex gap-8 flex-wrap p-4 justify-center">{generateDays()}</div>
-                <div className="flex gap-6 mt-6">
+                <div className="flex gap-8 flex-wrap p-4 justify-center justify-self-center">{generateDays()}</div>
+                <div className="flex gap-6 mt-6 justify-self-center">
                     <button className={`bg-slate-400 sm:w-60 w-44 h-11 rounded-lg text-white bg-opacity-75 text-xl mb-6 hover:bg-opacity-100 hover:bg-slate-600 ${mode===0 ? 'border-2' : ''}`} onClick={() => setMode(0)}>Celý den</button>
                     <button className={`bg-slate-400 sm:w-60 w-44 h-11 rounded-lg text-white bg-opacity-75 text-xl mb-6 hover:bg-opacity-100 hover:bg-slate-600 ${mode===0 ? '' : 'border-2'}`} onClick={() => setMode(1)}>Po hodině</button>
                 </div>
-                {mode===0 ? generateDayInfo() : <div className="bg-white xl:w-2/5 lg:w-2/3 md:w-3/4 w-100% rounded-lg p-6 bg-opacity-90 flex flex-col justify-around shadow-xl">{generateHours()}</div>}
+                {mode===0 ? generateDayInfo() : <div className="bg-white xl:w-2/5 lg:w-2/3 md:w-3/4 w-100% rounded-lg p-6 bg-opacity-90 flex flex-col justify-around shadow-xl justify-self-center">{generateHours()}</div>}
             </>
             } 
-        <footer className="bg-opacity-50 mt-4 bg-slate-500 w-full h-16 flex justify-center items-center">
-            <div>Jakub Krupka</div>
+        <footer className="bg-opacity-50 mt-4 bg-slate-500 w-full h-16 flex justify-around items-center bottom-0 self-end justify-self-center">
+            <div className="text-xl">Jakub Krupka</div>
+            <div><a href="https://github.com/Krupin0/weather" target="blank"><i class="fa-brands fa-github text-3xl"></i></a></div>
         </footer>
         </div>
     )

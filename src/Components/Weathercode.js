@@ -48,7 +48,7 @@ export default function Weathercode(props){
       }
 
     function generateImg(){
-        return(<img src={"https://ssl.gstatic.com/onebox/weather/128/" + src +".png"} alt={src} className="h-full"/>)
+        return <img src={"https://ssl.gstatic.com/onebox/weather/128/" + src + ".png"} alt="Počasí" className="h-full"/>
     }
     
     return(src ? generateImg() : null)

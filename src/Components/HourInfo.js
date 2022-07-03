@@ -7,9 +7,9 @@ export default function HourInfo(props){
     function click(){
         setClicked(prev => !prev)
     }
+
     return(
         <div>
-            
             <div onClick={click} className="grid grid-cols-[14%_11%_17%_26%_27%_5%] items-center h-14 border-t border-slate-500 px-4 cursor-pointer">
                 <h1>{new Date(props.data.time[props.id]).getHours() + ":" + new Date(props.data.time[props.id]).getMinutes()}0</h1>
                 <h1>{props.data.temperature_2m[props.id]}°</h1>
